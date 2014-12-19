@@ -14,8 +14,11 @@ var busqueda = {
 		{
 
 			$('button').click(function(event){
-				var  checkbox = $(event.currentTarget).find(':checkbox').prop('checked') ; 
-		//		 $(event.currentTarget).find(':checkbox').prop('checked',!()) ; 
+				console.log("clicked ! ") ;
+				var  checkbox = $(event.currentTarget).find(':checkbox'); 
+				console.log(checkbox.prop('checked') )  ;
+
+				checkbox.prop('checked' , !checkbox.prop('checked'))
 
 			});
 			$('#buscar-boton').click(busqueda.apply);
