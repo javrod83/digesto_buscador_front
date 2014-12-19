@@ -1,19 +1,21 @@
 #contenedor{
-	
-	width:98% ; 
 	min-width: 1024px;
 
 	#header{
-		margin: 20px 0;
-		padding:  0 15px;
+		background-color: #00b4e1;
+		
+		nav{
+			margin: 20px 0;
+			padding:  0 15px;
+		}
+
 		h1{
-			padding: 1vh 1vw ; 
+			padding: 1vh 0; 
 			color: #337ab7;
 			font-family: arial;
 			margin: 0;
 		}
 	}
-
 	#contenido{
 		#campo-busqueda{
 
@@ -44,7 +46,6 @@
 
 .fila-inferior{
 	margin-top:10px;
-	
 }
 
 

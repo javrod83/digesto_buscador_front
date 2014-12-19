@@ -1,12 +1,13 @@
 @import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic);
 #contenedor {
-  width: 98%;
   min-width: 1024px; }
   #contenedor #header {
-    margin: 20px 0;
-    padding: 0 15px; }
+    background-color: #00b4e1; }
+    #contenedor #header nav {
+      margin: 20px 0;
+      padding: 0 15px; }
     #contenedor #header h1 {
-      padding: 1vh 1vw;
+      padding: 1vh 0;
       color: #337ab7;
       font-family: arial;
       margin: 0; }

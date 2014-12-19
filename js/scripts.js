@@ -1,5 +1,3 @@
-
-
 //CONFIGURACION DE LOS CALENDARIOS 
 var calendar_conf = {
 	monthNames  : [ "Enero", "Febrero", "Martes", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ],
@@ -14,6 +12,12 @@ var busqueda = {
 	base_url : "http://sparl-desa.hcdn.gob.ar:8080/exist/rest/db/digesto/xql/search-index.xql?",
 	bind     : function()
 		{
+
+			$('button').click(function(event){
+				var  checkbox = $(event.currentTarget).find(':checkbox').prop('checked') ; 
+		//		 $(event.currentTarget).find(':checkbox').prop('checked',!()) ; 
+
+			});
 			$('#buscar-boton').click(busqueda.apply);
 			$('#buscar-value').keypress(function(e) {
 			    if(e.which == 13) {
@@ -78,18 +82,6 @@ var filtros = {
 			 return le_query; 
 		}
 };
-
-function bind_events()
-	{
-		//campo de busqueda 
-		busqueda.bind();
-
-		//campo de filtros
-		filtros.bind();
-		
-		//resultados 
-		resultados.hide_loader();
-	}
 
 var resultados = {
 	proccess 	   : function(payload)
@@ -223,6 +215,16 @@ var resultados = {
 		}
 } ; 
 
-
 // cuando todos los elementos de la pagina esten cargados buscar los registros del indice
-$( document ).ready(bind_events);
+$( document ).ready(function ()
+	{
+		//campo de busqueda 
+		busqueda.bind();
+
+		//campo de filtros
+		filtros.bind();
+		
+		//resultados ocultar loader 
+		resultados.hide_loader();
+	}
+);
