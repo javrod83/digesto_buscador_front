@@ -49,13 +49,14 @@ var filtros = {
 
 			$("#fecha-hasta-value").datepicker(calendar_conf);
 			$("#fecha-hasta-value").datepicker( 'option' , 'onClose', fecha_hasta_cambio );
+
+			function fecha_desde_cambio ()
+				{ $("#fecha-hasta-value").datepicker( "option", "minDate",$( "#fecha-desde-value" ).val() );}
+
+			function fecha_hasta_cambio () 
+				{ $("#fecha-desde-value").datepicker( "option", "maxDate", $( "#fecha-desde-value" ).val() );} 
+
 		},
-	rama : {
-		//cuando se clickea 
-	} , 
-	fecha_desde : {} , 
-	fecha_hasta : {} , 
-	numero : {},
 	params : function ()
 		{
 
@@ -78,12 +79,6 @@ var filtros = {
 		}
 };
 
-function fecha_desde_cambio ()
-	{ $("#fecha-hasta-value").datepicker( "option", "minDate",$( "#fecha-desde-value" ).val() );}
-
-function fecha_hasta_cambio () 
-	{ $("#fecha-desde-value").datepicker( "option", "maxDate", $( "#fecha-desde-value" ).val() );} 
-
 function bind_events()
 	{
 		//campo de busqueda 
@@ -91,15 +86,9 @@ function bind_events()
 
 		//campo de filtros
 		filtros.bind();
-
 		
 		//resultados 
 		resultados.hide_loader();
-	}
-
-function valorImput()
-	{
-		return $('#buscar-value').val();
 	}
 
 var resultados = {
@@ -119,25 +108,6 @@ var resultados = {
 		},
 	append  	   : function (val)
 		{
-			// $('#resultados-cuerpo').append(
-	  //           '<div class="row fila-resultado">'+
-	  //           	//'<div data-fragmento="'++'" data-id="'+val.docNumber[0]['#text']+'"></div>'+ 
-			// 		'<span  class="col-md-1 col-sm-1">'+val.docNumber[0]['$']+' </span>'+
-			// 		'<span  class="col-md-1 col-sm-1" >'+val.docNumber[1]['$']+' </span>'+
-			// 	    '<span  class="detalle col-md-6 col-sm-6"  >'+
-			// 	    	'<div class="titulo">'+val.docTitle['$']+'</div>'+
-			// 	    	'<div class="fragmento">'+present_fragment(val)+'</div>'+
-
-			// 	    '</span>'+
-			// 		'<span  class="col-md-2 col-sm-2" >'+val.docDate['$']+'</span>'+
-			// 		'<span  class="col-md-2 col-sm-2" >'+
-			// 	    	'<a href="http://sparl-desa.hcdn.gob.ar:8080/exist/rest/digesto/xql/transform_01.xql?as=xml&amp;docNumber='+val.docNumber[1]['$']+'" class="btn  btn-xs boton-xml">XML </a>'+
-			// 	    	'<a href="http://sparl-desa.hcdn.gob.ar:8080/exist/rest/digesto/xql/transform_01.xql?as=html&amp;docNumber='+val.docNumber[1]['$']+'" class="btn  btn-xs boton-html">HTML</a>'+
-			// 	    '</span>'+
-			// 	'</div>'
-			// );
-
-
 			$('#resultados-cuerpo').append(
 				'<tr>'+
                 	'<td class="codigo">'+val.docNumber[0]['$']+'</td>'+
