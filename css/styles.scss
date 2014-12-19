@@ -1,0 +1,150 @@
+#contenedor{
+	
+	width:98% ; 
+	min-width: 1024px;
+
+	#header{
+		margin: 20px 0;
+		padding:  0 15px;
+		h1{
+			padding: 1vh 1vw ; 
+			color: #337ab7;
+			font-family: arial;
+			margin: 0;
+		}
+	}
+
+	#contenido{
+		#campo-busqueda{
+
+			.input-group{
+				.boton-buscar{
+					background: #337ab7;
+					border-color: #2e6da4;
+					color: white;
+				}
+			}
+		}
+
+	}
+}
+
+#campo-filtros{
+	margin-top:5px;
+
+	#ramas-check{
+		margin: 2px ; 
+	}
+}
+
+
+
+
+
+
+.fila-inferior{
+	margin-top:10px;
+	
+}
+
+
+		
+#numero-check,#fecha-hasta-check,#fecha-desde-check{
+	margin:2px;
+}
+
+#fecha-desde-value,#fecha-hasta-value,#numero-value{	
+		width:70%;
+	}
+
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic);
+
+body {
+ padding:0;
+ margin: 0;
+ font-family: 'PT Sans', sans-serif;
+}
+
+table {
+    border-spacing: 0px;
+    width:100%;
+}
+
+table tr th {
+    border-bottom:1px solid #ffffff;
+    background-color:#e0e0e0;
+    padding:5px;
+}
+
+table tr td {
+    border-bottom:1px solid #dedede;
+    padding:10px;
+    font-size:13px;
+    line-height:16px;
+    vertical-align:top;
+}
+
+tr:nth-child(even) { 
+    background-color: #f7f7f7; 
+}
+
+a {
+    display:block;
+    padding:5px;
+    text-decoration:none;
+    color:white;
+    border-radius:2px;
+}
+
+.num {
+    width:2%;
+}
+
+.codigo {
+    width:6%;
+}
+
+.codigo {
+    width:6%;
+}
+
+.numero_ley {
+    width:4%;
+}
+
+.titulo {
+    width:20%;
+    .el_titulo{
+    	font-weight: bold; 
+    }
+    .fragmento{
+    	color:#00b4e1;
+    }
+}
+
+.fecha {
+    width:8%;
+}
+
+.organismos {
+    line-height: 100%;
+    margin-bottom:0.6em
+}
+
+.montos {
+    width:10%;
+    line-height: 100%;
+    margin-bottom:0.6em
+}
+
+.referencias {
+    width:15%;
+
+    div{
+    	a{
+    		margin-top: 4px;
+    	}
+    }
+}
+
+
