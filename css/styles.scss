@@ -2,9 +2,10 @@
 
 body
 {
-    padding:0;
-    margin: 0;
+    color: #444;
     font-family: 'PT Sans', sans-serif;
+    margin: 0;
+    padding:0;
 }
 
 table
@@ -41,31 +42,38 @@ a
 
 #contenedor
 {
+  width: 98%;
+  min-width: 1024px;
+}
+#campo-filtros
+{
+    margin: 10px 0 20px 0;
+
+    legend
+    {
+        border: none;
+        color: #444;
+        font-size: 18px;
+        font-weight: 700;
+        margin: 0 0 10px 0;
+    }
+}
+#contenedor
+{
 	min-width: 1024px;
 
 	#contenido
     {
 		#campo-busqueda
         {
-			.input-group
+			#buscar-boton
             {
-				.boton-buscar
-                {
-					background: #00b4e1;
-					color: white;
-				}
-			}
+                background: #ec9f48;
+                color: white;
+                font-size: 18px;
+            }
 		}
 
-	}
-}
-#campo-filtros
-{
-	margin-top:5px;
-
-	#ramas-check
-    {
-		margin: 2px ; 
 	}
 }
 #header
@@ -75,13 +83,13 @@ a
     
     h1
     {
-        padding: 1vh 0;
+        font-weight: 700;
         margin: 0;
+        padding: 1vh 0;
     }
     p
     {
         font-size: 18px;
-        font-weight: 700;
     }
     .navbar
     {
@@ -93,72 +101,51 @@ a
         border-color: transparent;
         color: white;
     }
-}		
-#numero-check,#fecha-hasta-check,#fecha-desde-check
+}
+.num
 {
-	margin:2px;
+    width: 2%;
 }
-#fecha-desde-value,#fecha-hasta-value,#numero-value
-{	
-	width:70%;
-}
-.fila-inferior
+.codigo 
 {
-    margin-top:10px;
+    width: 6%;
 }
-
-
-
-.num {
-    width:2%;
+.numero_ley
+{
+    width: 4%;
 }
-
-.codigo {
-    width:6%;
+.titulo
+{
+    width: 20%;
 }
-
-.codigo {
-    width:6%;
+.titulo .el_titulo
+{
+    font-weight: bold;
 }
-
-.numero_ley {
-    width:4%;
+.titulo .fragmento
+{
+    color: #333333;
 }
-
-.titulo {
-    width:20%;
-    .el_titulo{
-    	font-weight: bold; 
-    }
-    .fragmento{
-    	color:#00b4e1;
-    }
+.busqueda-fragmento
+{
+    background-color:#f8ebcb;
 }
-
-.fecha {
-    width:8%;
+.fecha
+{
+    width: 8%;
 }
-
-.organismos {
+.organismos
+{
     line-height: 100%;
-    margin-bottom:0.6em
+    margin-bottom: 0.6em;
 }
-
-.montos {
-    width:10%;
+.montos
+{
+    width: 15%;
     line-height: 100%;
-    margin-bottom:0.6em
+    margin-bottom: 0.6em;
 }
 
-.referencias {
-    width:15%;
-
-    div{
-    	a{
-    		margin-top: 4px;
-    	}
-    }
-}
 
 
 #overlay{
@@ -176,3 +163,30 @@ a
 		font-weight: bold; 
 	}
 }
+
+.referencias 
+{
+    div
+    {
+        a
+        {
+            margin-top: 4px;
+            color: #444444;
+            text-decoration: none;
+            background-color: rgba(0,180,255,0.2);
+            -webkit-transition: 0.3s ease-in-out;
+            -moz-transition: 0.3s ease-in-out;
+            -o-transition: 0.3s ease-in-out;
+            transition: 0.3s ease-in-out;
+            margin-right: 5px;
+        
+            &:hover
+            {
+                background-color: rgba(0,180,255,1);
+                color: white !important;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
