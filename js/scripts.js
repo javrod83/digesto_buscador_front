@@ -14,9 +14,9 @@ var busqueda = {
 		{
 
 			$('button').click(function(event){
-				console.log("clicked ! ") ;
+				//console.log("clicked ! ") ;
 				var  checkbox = $(event.currentTarget).find(':checkbox'); 
-				console.log(checkbox.prop('checked') )  ;
+				//console.log(checkbox.prop('checked') )  ;
 
 				checkbox.prop('checked' , !checkbox.prop('checked'))
 
@@ -156,7 +156,7 @@ var resultados = {
 					var out = "" ;
 					if ( val.references === null || val.references === undefined )
 						return out;
-					console.log(val.references);
+					//console.log(val.references);
 					$.each(val.references,function(i,v){
 						if (v !== null)
 							{
@@ -227,7 +227,7 @@ $( document ).ready(function ()
 		//campo de filtros
 		filtros.bind();
 		
-		//resultados ocultar loader 
-		resultados.hide_loader();
+		//resultados mostrar todo !!!! 
+		$('#buscar-boton').click();
 	}
 );
