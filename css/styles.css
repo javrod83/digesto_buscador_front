@@ -114,6 +114,16 @@ a {
     padding: 10px 17px;
     font-weight: bold; }
 
+.organismo, .monto {
+  margin-bottom: 0.6em; }
+
+.referencias {
+  width: 15%;
+  border-radius: 2px;
+  color: #444444;
+  cursor: pointer;
+  padding: 5px 0; }
+
 .referencias div a {
   margin-top: 4px;
   color: #444444;
