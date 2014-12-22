@@ -19,23 +19,25 @@
 		</div>
 		<div id="contenedor" class="col-xs-12">
 			<div id="contenido">
-				<div id="campo-busqueda" class="input-group col-xs-12">
-					<div class="input-group input-lg">
-					    <input id="buscar-value" type="text" class="form-control" placeholder="Introduzca término">
-					  	<span id="buscar-boton" class="boton-buscar input-group-addon">Buscar</span>
-					</div>
+				<div class="col-xs-12">
+					<div id="campo-busqueda" class="input-group input-lg col-xs-12">
+					    <input id="buscar-value" type="text" class="form-control input-lg" placeholder="Introduzca término">
+					  	<span class="input-group-btn">
+					        <button id="buscar-boton" class="btn input-lg" type="button">Buscar</button>
+					    </span>
+				    </div>
 				</div>
 				<div id="campo-filtros" class="col-xs-12">
 					<form role="form">
-						<legend>Filtros</legend>
-						<div class="form-group col-sm-5">
-							<div class="btn-group" role="group" >
-								<button type="button" class="btn btn-default desactivable">
-									<input id="ramas-check" type="checkbox">
-								</button>
-							 	<div class="btn-group" role="group">
-									<select id="ramas-select" class="selectpicker desactivable">
-										<option default >Seleccion Rama</option>
+						<legend>Aplicar filtros</legend>
+						<div class="form-group row">
+							<div class="col-xs-12 col-sm-6 col-md-3" role="group">
+							    <div class="input-group">
+							      	<span class="input-group-addon desactivable">
+							        	<input type="checkbox" id="ramas-check"/>
+							      	</span>
+							      	<select id="ramas-select" class="form-control selectpicker desactivable">
+										<option default >Ramas</option>
 										<option value = "ADM" >ADM - Administrativo</option>
 										<option value = "ACU" >ACU - Cultura, Ciencia y Tecnología</option>
 										<option value = "AED" >AED - Educación</option>
@@ -68,32 +70,35 @@
 										<option value = "Y" >Y - Seguridad Social</option>
 										<option value = "Z" >Z - Transporte y Seguros.</li>
 									</select>
-								</div>
-							</div>
-							<div id="numero-field" class="btn-group fila-inferior" role="group" >
-								<button type="button" class="btn btn-default">
-									<input id="numero-check" type="checkbox">
-								</button>
-							 	<input  id="numero-value" type="text" class="form-control" placeholder="Numero de Ley">
-							</div>
-						</div>
-						<div class="form-group col-sm-5">
-							<div id="fecha-desde-field" class="btn-group " role="group" >
-								<button type="button" class="btn btn-default desactivable">
-									<input id="fecha-desde-check" type="checkbox">
-								</button>
-							 	<input  id="fecha-desde-value" type="text" class="form-control desactivable" placeholder="Fecha Desde">
-							</div>
-							<div id="fecha-hasta-field" class="btn-group fila-inferior" role="group" >
-								<button type="button" class="btn btn-default desactivable">
-									<input id="fecha-hasta-check" type="checkbox">
-								</button>
-							 	<input  id="fecha-hasta-value" type="text" class="form-control desactivable" placeholder="Fecha Hasta">
-							</div>
+							    </div><!-- /input-group -->
+							</div><!-- /.col-md-3 -->
+							<div class="col-xs-12 col-sm-6 col-md-3" role="group">
+							    <div id="numero-field" class="input-group">
+							      	<span class="input-group-addon desactivable">
+							        	<input type="checkbox" id="numero-check"/>
+							      	</span>
+							      	<input id="numero-value" type="text" class="form-control desactivable" placeholder="Número de ley">
+							    </div><!-- /input-group -->
+							</div><!-- /.col-md-3 -->
+							<div class="col-xs-12 col-sm-6 col-md-3" role="group">
+								<div id="fecha-desde-field" class="input-group">
+									<span class="input-group-addon desactivable">
+							        	<input type="checkbox" id="fecha-desde-check"/>
+							      	</span>
+								 	<input  id="fecha-desde-value" type="text" class="form-control desactivable" placeholder="Desde" />
+								</div><!-- /input-group -->
+							</div><!-- /.col-md-3 -->
+							<div class="col-xs-12 col-sm-6 col-md-3" role="group">
+								<div id="fecha-hasta-field" class="input-group">
+									<span class="input-group-addon desactivable">
+							        	<input type="checkbox" id="fecha-hasta-check"/>
+							      	</span>
+								 	<input  id="fecha-hasta-value" type="text" class="form-control desactivable" placeholder="Hasta" />
+								</div><!-- /input-group -->
+							</div><!-- /.col-md-3 -->
 						</div>
 					</form>
 				</div><!--#campo-filtros-->
-
 				<div id="campo-resultados">
 						<div id="overlay" class="col-sm-12">
 							<div id="preloader">
