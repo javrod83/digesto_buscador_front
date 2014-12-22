@@ -1,35 +1,4 @@
 @import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic);
-#contenedor {
-  min-width: 1024px; }
-  #contenedor #header {
-    background-color: #00b4e1; }
-    #contenedor #header nav {
-      margin: 20px 0;
-      padding: 0 15px; }
-    #contenedor #header h1 {
-      padding: 1vh 0;
-      color: #337ab7;
-      font-family: arial;
-      margin: 0; }
-  #contenedor #contenido #campo-busqueda .input-group .boton-buscar {
-    background: #337ab7;
-    border-color: #2e6da4;
-    color: white; }
-
-#campo-filtros {
-  margin-top: 5px; }
-  #campo-filtros #ramas-check {
-    margin: 2px; }
-
-.fila-inferior {
-  margin-top: 10px; }
-
-#numero-check, #fecha-hasta-check, #fecha-desde-check {
-  margin: 2px; }
-
-#fecha-desde-value, #fecha-hasta-value, #numero-value {
-  width: 70%; }
-
 body {
   padding: 0;
   margin: 0;
@@ -60,6 +29,42 @@ a {
   text-decoration: none;
   color: white;
   border-radius: 2px; }
+
+#contenedor {
+  min-width: 1024px; }
+  #contenedor #contenido #campo-busqueda .input-group .boton-buscar {
+    background: #00b4e1;
+    color: white; }
+
+#campo-filtros {
+  margin-top: 5px; }
+  #campo-filtros #ramas-check {
+    margin: 2px; }
+
+#header {
+  background-color: #00b4e1;
+  margin: 0 0 30px 0; }
+  #header h1 {
+    padding: 1vh 0;
+    margin: 0; }
+  #header p {
+    font-size: 18px;
+    font-weight: 700; }
+  #header .navbar {
+    margin: 0; }
+  #header .navbar-default {
+    background-color: transparent;
+    border-color: transparent;
+    color: white; }
+
+#numero-check, #fecha-hasta-check, #fecha-desde-check {
+  margin: 2px; }
+
+#fecha-desde-value, #fecha-hasta-value, #numero-value {
+  width: 70%; }
+
+.fila-inferior {
+  margin-top: 10px; }
 
 .num {
   width: 2%; }

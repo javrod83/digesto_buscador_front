@@ -1,28 +1,57 @@
-#contenedor{
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic);
+
+body
+{
+    padding:0;
+    margin: 0;
+    font-family: 'PT Sans', sans-serif;
+}
+
+table
+{
+    border-spacing: 0px;
+    width:100%;
+}
+table tr th
+{
+    border-bottom:1px solid #ffffff;
+    background-color:#e0e0e0;
+    padding:5px;
+}
+table tr td
+{
+    border-bottom:1px solid #dedede;
+    padding:10px;
+    font-size:13px;
+    line-height:16px;
+    vertical-align:top;
+}
+tr:nth-child(even)
+{ 
+    background-color: #f7f7f7; 
+}
+a
+{
+    display:block;
+    padding:5px;
+    text-decoration:none;
+    color:white;
+    border-radius:2px;
+}
+
+#contenedor
+{
 	min-width: 1024px;
 
-	#header{
-		background-color: #00b4e1;
-		
-		nav{
-			margin: 20px 0;
-			padding:  0 15px;
-		}
-
-		h1{
-			padding: 1vh 0; 
-			color: #337ab7;
-			font-family: arial;
-			margin: 0;
-		}
-	}
-	#contenido{
-		#campo-busqueda{
-
-			.input-group{
-				.boton-buscar{
-					background: #337ab7;
-					border-color: #2e6da4;
+	#contenido
+    {
+		#campo-busqueda
+        {
+			.input-group
+            {
+				.boton-buscar
+                {
+					background: #00b4e1;
 					color: white;
 				}
 			}
@@ -30,72 +59,55 @@
 
 	}
 }
-
-#campo-filtros{
+#campo-filtros
+{
 	margin-top:5px;
 
-	#ramas-check{
+	#ramas-check
+    {
 		margin: 2px ; 
 	}
 }
-
-
-
-
-
-
-.fila-inferior{
-	margin-top:10px;
-}
-
-
-		
-#numero-check,#fecha-hasta-check,#fecha-desde-check{
+#header
+{
+    background-color: #00b4e1;
+    margin: 0 0 30px 0;
+    
+    h1
+    {
+        padding: 1vh 0;
+        margin: 0;
+    }
+    p
+    {
+        font-size: 18px;
+        font-weight: 700;
+    }
+    .navbar
+    {
+        margin: 0;
+    }
+    .navbar-default
+    {
+        background-color: transparent;
+        border-color: transparent;
+        color: white;
+    }
+}		
+#numero-check,#fecha-hasta-check,#fecha-desde-check
+{
 	margin:2px;
 }
-
-#fecha-desde-value,#fecha-hasta-value,#numero-value{	
-		width:70%;
-	}
-
-@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic);
-
-body {
- padding:0;
- margin: 0;
- font-family: 'PT Sans', sans-serif;
+#fecha-desde-value,#fecha-hasta-value,#numero-value
+{	
+	width:70%;
+}
+.fila-inferior
+{
+    margin-top:10px;
 }
 
-table {
-    border-spacing: 0px;
-    width:100%;
-}
 
-table tr th {
-    border-bottom:1px solid #ffffff;
-    background-color:#e0e0e0;
-    padding:5px;
-}
-
-table tr td {
-    border-bottom:1px solid #dedede;
-    padding:10px;
-    font-size:13px;
-    line-height:16px;
-    vertical-align:top;
-}
-
-tr:nth-child(even) { 
-    background-color: #f7f7f7; 
-}
-
-a {
-    display:block;
-    padding:5px;
-    text-decoration:none;
-    color:white;
-    border-radius:2px;
-}
 
 .num {
     width:2%;
