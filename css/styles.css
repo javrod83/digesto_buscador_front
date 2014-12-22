@@ -93,7 +93,8 @@ a {
 
 .organismos {
   line-height: 100%;
-  margin-bottom: 0.6em; }
+  margin-bottom: 0.6em;
+  width: 20%; }
 
 .montos {
   width: 15%;

@@ -1,3 +1,5 @@
+
+
 //CONFIGURACION DE LOS CALENDARIOS 
 var calendar_conf = {
 	monthNames  : [ "Enero", "Febrero", "Martes", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ],
@@ -21,6 +23,7 @@ var busqueda = {
 				checkbox.prop('checked' , !checkbox.prop('checked'))
 
 			});
+
 			$('#buscar-boton').click(busqueda.apply);
 			$('#buscar-value').keypress(function(e) {
 			    if(e.which == 13) {
@@ -86,6 +89,9 @@ var filtros = {
 		}
 };
 
+
+	
+
 var resultados = {
 	proccess 	   : function(payload)
 		{
@@ -108,10 +114,10 @@ var resultados = {
                 	'<td class="codigo">'+val.docNumber[0]['$']+'</td>'+
                		'<td class="numero_ley">'+val.docNumber[1]['$']+'</td>'+
 	                '<td>'+
-	                	'<a href="http://sparl-desa.hcdn.gob.ar:8080/exist/rest/digesto/transform/transform_01.xql?as=html&amp;docNumber='+val.docNumber[0]['$']+'" style="background-color:#00b4e1">html</a>'+
+	                	'<a href="http://sparl-desa.hcdn.gob.ar:8080/exist/rest/digesto/transform/transform_01.xql?as=html&amp;docNumber='+val.docNumber[1]['$']+'" style="background-color:#00b4e1">html</a>'+
 	                '</td>'+
                 	'<td>'+
-                	'<a href="http://sparl-desa.hcdn.gob.ar:8080/exist/rest/digesto/transform/transform_01.xql?as=xml&amp;docNumber='+val.docNumber[0]['$']+'" style="background-color:#EC9F48;">xml</a>'+
+                	'<a href="http://sparl-desa.hcdn.gob.ar:8080/exist/rest/digesto/transform/transform_01.xql?as=xml&amp;docNumber='+val.docNumber[1]['$']+'" style="background-color:#EC9F48;">xml</a>'+
                 '</td>'+
                 '<td class="titulo">'+
                 	'<div class="el_titulo">'+val.docTitle['$']+'</div>'+
@@ -133,7 +139,7 @@ var resultados = {
 					if (val.organizations === undefined)
 						return out;
 					$.each(val.organizations,function(i,v){
-						out+= '<div>'+v+'</div>'
+						out+= '<div class="organismo">'+v+'</div>'
 					});
 
 					return out ;
@@ -145,7 +151,7 @@ var resultados = {
 					if (val.quantities === undefined)
 						return out;
 					$.each(val.quantities,function(i,v){
-							out+= '<div>'+v+'</div>'
+							out+= '<div class="monto">'+v+'</div>'
 					});
 
 					return out ;
@@ -161,7 +167,7 @@ var resultados = {
 						if (v !== null)
 							{
 								out +='<div>'+
-                    				'<a href="'+v.reference.link+'" style="background-color:#EC9F48;">'+v.reference.name+'</a>'+
+                    				'<a href="'+v.reference.link+'" >'+v.reference.name+'</a>'+
                     			'</div>'; 
 							}
 					});
@@ -196,7 +202,7 @@ var resultados = {
 
 					$.each(temp,function(i,v){
 						if (temp.length-1 !== i )
-							out+= v +" <strong> "+val.query+" </strong> ";
+							out+= v + '<strong class="busqueda-fragmento"> '+val.query+'</strong>' ;
 						else 
 							out+=" "+v;    
 					});
@@ -218,9 +224,10 @@ var resultados = {
 		}
 } ; 
 
+
+
 // cuando todos los elementos de la pagina esten cargados buscar los registros del indice
-$( document ).ready(function ()
-	{
+$( document ).ready(function(){
 		//campo de busqueda 
 		busqueda.bind();
 
@@ -229,5 +236,4 @@ $( document ).ready(function ()
 		
 		//resultados mostrar todo !!!! 
 		$('#buscar-boton').click();
-	}
-);
+	});
