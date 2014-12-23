@@ -76,6 +76,13 @@ a {
 .numero_ley {
   width: 4%; }
 
+.exportar {
+  padding: 5px !important; }
+  .exportar a:hover {
+    color: white;
+    opacity: 0.5;
+    text-decoration: none; }
+
 .titulo {
   width: 20%; }
 

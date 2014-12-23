@@ -35,9 +35,15 @@ a
 {
     display:block;
     padding:5px;
-    text-decoration:none;
+    text-decoration: none !important;
     color:white;
     border-radius:2px;
+
+    &:hover
+    {
+        text-decoration: none !important;
+        color:white;
+    }
 }
 
 #contenedor
@@ -113,6 +119,20 @@ a
 .numero_ley
 {
     width: 4%;
+}
+.exportar
+{
+    padding: 5px !important;
+
+    a
+    {
+        &:hover
+        {
+            color: white;
+            opacity: 0.5;
+            text-decoration: none;
+        }
+    }
 }
 .titulo
 {
