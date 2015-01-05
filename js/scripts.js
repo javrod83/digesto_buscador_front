@@ -14,6 +14,16 @@ var busqueda = {
 	base_url : "http://sparl-desa.hcdn.gob.ar:8080/exist/rest/db/digesto/xql/search-index.xql?",
 	bind     : function()
 		{
+
+			$('button').click(function(event){
+				//console.log("clicked ! ") ;
+				var  checkbox = $(event.currentTarget).find(':checkbox'); 
+				//console.log(checkbox.prop('checked') )  ;
+
+				checkbox.prop('checked' , !checkbox.prop('checked'))
+
+			});
+
 			$('#buscar-boton').click(busqueda.apply);
 			$('#buscar-value').keypress(function(e) {
 			    if(e.which == 13) {
@@ -79,17 +89,8 @@ var filtros = {
 		}
 };
 
-function bind_events()
-	{
-		//campo de busqueda 
-		busqueda.bind();
 
-		//campo de filtros
-		filtros.bind();
-		
-		//resultados 
-		resultados.hide_loader();
-	}
+	
 
 var resultados = {
 	proccess 	   : function(payload)
@@ -113,10 +114,10 @@ var resultados = {
                 	'<td class="codigo">'+val.docNumber[0]['$']+'</td>'+
                		'<td class="numero_ley">'+val.docNumber[1]['$']+'</td>'+
 	                '<td>'+
-	                	'<a href="http://sparl-desa.hcdn.gob.ar:8080/exist/rest/digesto/transform/transform_01.xql?as=html&amp;docNumber='+val.docNumber[0]['$']+'" style="background-color:#00b4e1">html</a>'+
+	                	'<a href="http://sparl-desa.hcdn.gob.ar:8080/exist/rest/digesto/transform/transform_01.xql?as=html&amp;docNumber='+val.docNumber[1]['$']+'" style="background-color:#00b4e1">html</a>'+
 	                '</td>'+
                 	'<td>'+
-                	'<a href="http://sparl-desa.hcdn.gob.ar:8080/exist/rest/digesto/transform/transform_01.xql?as=xml&amp;docNumber='+val.docNumber[0]['$']+'" style="background-color:#EC9F48;">xml</a>'+
+                	'<a href="http://sparl-desa.hcdn.gob.ar:8080/exist/rest/digesto/transform/transform_01.xql?as=xml&amp;docNumber='+val.docNumber[1]['$']+'" style="background-color:#EC9F48;">xml</a>'+
                 '</td>'+
                 '<td class="titulo">'+
                 	'<div class="el_titulo">'+val.docTitle['$']+'</div>'+
@@ -161,7 +162,7 @@ var resultados = {
 					var out = "" ;
 					if ( val.references === null || val.references === undefined )
 						return out;
-					console.log(val.references);
+					//console.log(val.references);
 					$.each(val.references,function(i,v){
 						if (v !== null)
 							{
@@ -224,5 +225,15 @@ var resultados = {
 } ; 
 
 
+
 // cuando todos los elementos de la pagina esten cargados buscar los registros del indice
-$( document ).ready(bind_events);
+$( document ).ready(function(){
+		//campo de busqueda 
+		busqueda.bind();
+
+		//campo de filtros
+		filtros.bind();
+		
+		//resultados mostrar todo !!!! 
+		$('#buscar-boton').click();
+	});
