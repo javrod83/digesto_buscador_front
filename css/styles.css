@@ -27,16 +27,19 @@ tr:nth-child(even) {
 a {
   display: block;
   padding: 5px;
-  text-decoration: none;
+  text-decoration: none !important;
   color: white;
   border-radius: 2px; }
+  a:hover {
+    text-decoration: none !important;
+    color: white; }
 
 #contenedor {
   width: 98%;
   min-width: 1024px; }
 
 #campo-filtros {
-  margin: 10px 0 20px 0; }
+  margin: 0 0 20px 0; }
   #campo-filtros legend {
     border: none;
     color: #444;
