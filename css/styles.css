@@ -106,10 +106,6 @@ a:hover
     border-color: transparent;
     color: white;
 }
-#busqueda-fragmento
-{
-    background-color: #f8ebcb;
-}
 #overlay
 {
     position: absolute;
@@ -167,6 +163,10 @@ a:hover
 {
     background-color: rgba(236,159,72,1);
     color: white !important;
+}
+.busqueda-fragmento
+{
+    background-color: #f8ebcb;
 }
 .codigo
 {
