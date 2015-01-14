@@ -1,5 +1,3 @@
-
-
 //CONFIGURACION DE LOS CALENDARIOS 
 var calendar_conf = {
 	monthNames  : [ "Enero", "Febrero", "Martes", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ],
@@ -137,6 +135,7 @@ var resultados = {
                     '<td class="organismos table-cell">'+presentar_organizaciones(val)+ '</td>'+
                     '<td class="montos table-cell">'+presentar_montos(val)+'</td>'+
                     '<td class="referencias table-cell">'+presentar_referencias(val)+'</td>'+
+                    '<td class="modificado table-cell">'+val.ult+'</td>'+
                 '</tr>'
             );
 			
@@ -154,7 +153,7 @@ var resultados = {
                     if (publicacion.date === "1500-01-01")
                         return publicacion.showAs;
                     else
-                        return publicacion.name+" "+formatea_fecha(publicacion.date);
+                        return (publicacion.name === null)?"":publicacion.name+" "+formatea_fecha(publicacion.date);
                 }
                 
             function formatea_fecha(date)

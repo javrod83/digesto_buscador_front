@@ -1,59 +1,71 @@
 @import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic);
 
+/* etiquetas */
+
 body
 {
     color: #444;
     font-family: 'PT Sans', sans-serif;
     margin: 0;
-    padding:0;
+    padding: 0;
+    counter-reset: td;
 }
-
 table
 {
     border-spacing: 0px;
-    width:100%;
+    font-size: 13px;
+    line-height: 1.25;
+    width: 100%;
 }
-table tr th
+thead
 {
-    border-bottom:1px solid #ffffff;
-    background-color:#e0e0e0;
-    padding:5px;
+    background-color: #e0e0e0;
 }
-table tr td
+tbody 
 {
-    border-bottom:1px solid #dedede;
-    padding:10px;
-    font-size:13px;
-    line-height:16px;
-    vertical-align:top;
+    tr
+    {
+        border-bottom: 1px solid #dedede;
+        padding: 5px 0;
+    }
 }
-tr:nth-child(even)
-{ 
-    background-color: #f7f7f7; 
+td
+{
+    vertical-align: top;
+}
+td.position
+{
+    &:before
+    {
+        content: counter(td);
+        counter-increment: td;
+    }
+}
+tr
+{
+    &:nth-child(even)
+    {
+        background-color: #f7f7f7;
+    }
 }
 a
 {
-    display:block;
-    padding:5px;
-    text-decoration: none !important;
-    color:white;
-    border-radius:2px;
+    border-radius: 3px;
+    display: inline-block;
+    padding: 4px;
+    text-decoration: none;
 
     &:hover
     {
-        text-decoration: none !important;
-        color:white;
+        text-decoration: none;
     }
 }
 
-#contenedor
+/* ids */
+
+#campo-filtros 
 {
-  width: 98%;
-  min-width: 1024px;
-}
-#campo-filtros
-{
-    margin: 0 0 20px 0;
+    margin: 10px 0 20px 0;
 
     legend
     {
@@ -64,29 +76,28 @@ a
         margin: 0 0 10px 0;
     }
 }
-#contenedor
+#contenedor 
 {
-	min-width: 1024px;
+    min-width: 1024px;
 
-	#contenido
+    #contenido
     {
-		#campo-busqueda
+        #campo-busqueda
         {
-			#buscar-boton
+            #buscar-boton
             {
                 background: #ec9f48;
                 color: white;
                 font-size: 18px;
             }
-		}
-
-	}
+        }
+    }
 }
 #header
 {
     background-color: #00b4e1;
     margin: 0 0 30px 0;
-    
+
     h1
     {
         font-weight: 700;
@@ -96,6 +107,7 @@ a
     p
     {
         font-size: 18px;
+        padding: 0;
     }
     .navbar
     {
@@ -108,118 +120,214 @@ a
         color: white;
     }
 }
-.num
+#overlay
 {
-    width: 2%;
-}
-.codigo 
-{
-    width: 6%;
-}
-.numero_ley
-{
-    width: 4%;
-}
-.exportar
-{
-    padding: 5px !important;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.84);
 
-    a
+    #preloader
     {
-        &:hover
-        {
-            color: white;
-            opacity: 0.5;
-            text-decoration: none;
-        }
+        font-size: 24px;
+        border-radius: 5px;
+        margin: 7vh auto;
+        width: 13%;
+        padding: 10px 17px;
+        font-weight: bold;
     }
 }
-.titulo
+
+/* clases */
+
+.brand-blue
 {
-    width: 20%;
+    background-color: rgba(0,180,255,0.2);
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+
+    &:hover
+    {
+        background-color: rgba(0,180,255,1);
+        color: white !important;
+    }
 }
-.titulo .el_titulo
+.brand-green
 {
-    font-weight: bold;
+    background-color: rgba(149,194,64,0.2);
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+
+    &:hover
+    {
+        background-color: rgba(149,194,64,1);
+        color: white !important;
+    }
 }
-.titulo .fragmento
+.brand-orange
 {
-    color: #333333;
+    background-color: rgba(236,159,72,0.2);
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+
+    &:hover
+    {
+        background-color: rgba(236,159,72,1);
+        color: white !important;
+    }
 }
 .busqueda-fragmento
 {
-    background-color:#f8ebcb;
+    background-color: #f8ebcb;
 }
-.fecha
+.codigo
+{
+    width: 2%;
+}
+.exportar
 {
     width: 8%;
-}
-.organismos
-{
-    line-height: 100%;
-    margin-bottom: 0.6em;
-    width: 20%;
-}
-.montos
-{
-    width: 15%;
-    line-height: 100%;
-    margin-bottom: 0.6em;
-}
 
-#overlay{
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(255, 255, 255, 0.84);
-
-	#preloader{
-		font-size: 24px;
-		border-radius: 5px;
-		margin: 7vh auto;
-		width: 13%;
-		padding: 10px 17px;
-		font-weight: bold; 
-	}
-}
-
-.organismo,.monto
-{
-   margin-bottom: 0.6em;
-}
-
-.referencias
-{
-   width: 15%;
-   border-radius: 2px;
-   color: #444444;
-   cursor:pointer;
-   padding: 5px 0;
-}
-
-.referencias 
-{
     div
     {
+        display: inline-block;   
+
         a
         {
-            margin-top: 4px;
-            color: #444444;
-            text-decoration: none;
-            background-color: rgba(0,180,255,0.2);
-            -webkit-transition: 0.3s ease-in-out;
-            -moz-transition: 0.3s ease-in-out;
-            -o-transition: 0.3s ease-in-out;
-            transition: 0.3s ease-in-out;
-            margin-right: 5px;
-        
-            &:hover
+            color: white;
+            margin: 0 4px 4px 0;
+
+            &:hover 
             {
-                background-color: rgba(0,180,255,1);
-                color: white !important;
-                text-decoration: none;
+                color: white;
+                opacity: 0.75;
             }
         }
     }
+    .exportar_html 
+    {
+        a
+        {
+            background-color: #00b4e1;
+        }
+    }
+    .exportar_pdf
+    {
+        a
+        {
+            background-color: #dc5f50
+        }
+    }
+    .exportar_xml 
+    {
+        a
+        {
+            background-color:#EC9F48
+        }
+    }
 }
+.fecha
+{
+    width: 7%;
+}
+.filter
+{
+    color: #444;
 
+    &:hover
+    {
+        color: #444;
+        text-decoration: underline;
+    }
+}
+.modificado
+{
+    width: 7%;
+}
+.montos
+{
+    width: 9%;
+}
+.nota
+{
+    line-height: 1;
+    margin-bottom: 4px;
+
+    a
+    {
+        color: #444;
+        cursor: pointer;
+        display: inline-block;
+    }
+}
+.numero_ley
+{
+    width: 2%;
+}
+.organismos
+{
+    width: 9%;
+}
+.position
+{
+    font-weight: 700;
+    width: 1%;
+}
+.promulgacion
+{
+    width: 7%;
+}
+.publicacion
+{
+    width: 7%;
+}
+.referencias
+{
+    width: 9%;
+}
+.table-cell
+{
+    padding: 1% 0.5%;
+}
+.titulo 
+{
+    width: 20%;
+
+    h3
+    {
+        font-size: 13px;
+        font-weight: bold;
+        margin: 0;
+
+        a
+        {
+            color: #444;
+
+            &:hover
+            {
+                text-decoration: underline;
+            }
+        }
+    }
+    .fragmento
+    {
+        color: #333333;
+    }
+}
+.triangle-down
+{
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 4px solid #444;
+    position: relative;
+    top: 12px;
+    left: 4px;
+}
