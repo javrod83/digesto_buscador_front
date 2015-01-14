@@ -111,35 +111,66 @@ var resultados = {
 		{
 			$('#resultados-cuerpo').append(
 				'<tr>'+
-                	'<td class="codigo">'+val.docNumber[0]['$']+'</td>'+
-               		'<td class="numero_ley">'+val.docNumber[1]['$']+'</td>'+
-	                '<td>'+
-	                	'<a href="http://sparl-desa.hcdn.gob.ar:8080/exist/rest/digesto/transform/transform_01.xql?as=html&amp;docNumber='+val.docNumber[1]['$']+'" style="background-color:#00b4e1">html</a>'+
+                	'<td class="position table-cell"></td>'+
+                    '<td class="codigo table-cell">'+val.docNumber[0]['$']+'</td>'+
+               		'<td class="numero_ley table-cell">'+val.docNumber[1]['$']+'</td>'+
+	                '<td class="exportar table-cell">'+
+	                	'<div class="exportar_html">'+
+                            '<a href="http://sparl-desa.hcdn.gob.ar:8080/exist/rest/digesto/transform/transform_01.xql?as=html&amp;docNumber='+val.docNumber[1]['$']+'">html</a>'+
+                        '</div>'+
+                        '<div class="exportar_pdf">'+
+                            '<a href="http://sparl-desa.hcdn.gob.ar:8080/exist/rest/digesto/transform/transform_01.xql?as=pdf&amp;docNumber='+val.docNumber[1]['$']+'">pdf</a>'+
+                        '</div>'+
+                        '<div class="exportar_xml">'+
+                            '<a href="http://sparl-desa.hcdn.gob.ar:8080/exist/rest/digesto/transform/transform_01.xql?as=xml&amp;docNumber='+val.docNumber[1]['$']+'">xml</a>'+
+                        '</div>'+
 	                '</td>'+
-                	'<td>'+
-                	'<a href="http://sparl-desa.hcdn.gob.ar:8080/exist/rest/digesto/transform/transform_01.xql?as=xml&amp;docNumber='+val.docNumber[1]['$']+'" style="background-color:#EC9F48;">xml</a>'+
-                '</td>'+
-                '<td class="titulo">'+
-                	'<div class="el_titulo">'+val.docTitle['$']+'</div>'+
-			 	    '<div class="fragmento">'+presentar_fragmento(val)+'</div>'+
-                '</td>'+
-                '<td class="fecha">'+val.docDate['$']+'</td>'+
-                '<td class="fecha">'+'consultar agus' +'</td>'+
-                '<td class="fecha">'+'consultar agus' +'</td>'+
-                '<td class="organismos">'+presentar_organizaciones(val)+ '</td>'+
-                '<td class="montos">'+presentar_montos(val)+'</td>'+
-                '<td class="referencias">'+presentar_referencias(val)+
-                '</td>'+
-            '</tr>'
+                    '<td class="titulo table-cell">'+
+                    	'<h3>'+
+                            '<a href="http://sparl-desa.hcdn.gob.ar:8080/exist/rest/digesto/transform/transform_01.xql?as=html&amp;docNumber='+val.docNumber[1]['$']+'">'+val.docTitle['$']+'</a>'+
+                        '</h3>'+
+    			 	    '<div class="fragmento">'+presentar_fragmento(val)+'</div>'+
+                    '</td>'+
+                    '<td class="fecha table-cell">'+val.docDate['$']+'</td>'+
+                    '<td class="promulgacion table-cell">'+ presentar_promulgacion(val.step)+'</td>'+
+                    '<td class="publicacion table-cell">'+presentar_publicacion(val.publication)+'</td>'+
+                    '<td class="organismos table-cell">'+presentar_organizaciones(val)+ '</td>'+
+                    '<td class="montos table-cell">'+presentar_montos(val)+'</td>'+
+                    '<td class="referencias table-cell">'+presentar_referencias(val)+'</td>'+
+                '</tr>'
             );
 			
+            function presentar_promulgacion(promulgacion)
+                {
+                    console.log(promulgacion);
+                    if (promulgacion === undefined )
+                        return("");
+                    else
+                        return formatea_fecha(promulgacion.date);
+                }
+                
+            function presentar_publicacion(publicacion)
+                {
+                    if (publicacion.date === "1500-01-01")
+                        return publicacion.showAs;
+                    else
+                        return publicacion.name+" "+formatea_fecha(publicacion.date);
+                }
+                
+            function formatea_fecha(date)
+                {
+                    var temp = date.split("-")
+                    
+                    return temp[2]+"-"+temp[1]+"-"+temp[0];
+                }
+                
 			function presentar_organizaciones(val)
 				{ 	
 					var out = "" ;
 					if (val.organizations === undefined)
 						return out;
 					$.each(val.organizations,function(i,v){
-						out+= '<div class="organismo">'+v+'</div>'
+						out+= '<div class="nota"><a class="brand-green">'+v+'</a></div>'
 					});
 
 					return out ;
@@ -151,7 +182,7 @@ var resultados = {
 					if (val.quantities === undefined)
 						return out;
 					$.each(val.quantities,function(i,v){
-							out+= '<div class="monto">'+v+'</div>'
+							out+= '<div class="nota"><a class="brand-orange">'+v+'</a></div>'
 					});
 
 					return out ;
@@ -166,8 +197,8 @@ var resultados = {
 					$.each(val.references,function(i,v){
 						if (v !== null)
 							{
-								out +='<div>'+
-                    				'<a href="'+v.reference.link+'" >'+v.reference.name+'</a>'+
+								out +='<div class="nota">'+
+                    				'<a href="'+v.reference.link+'" class="brand-blue">'+v.reference.name+'</a>'+
                     			'</div>'; 
 							}
 					});

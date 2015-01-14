@@ -1,152 +1,297 @@
 @import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic);
-body {
-  color: #444;
-  font-family: 'PT Sans', sans-serif;
-  margin: 0;
-  padding: 0; }
 
-table {
-  border-spacing: 0px;
-  width: 100%; }
+/* etiquetas */
 
-table tr th {
-  border-bottom: 1px solid #ffffff;
-  background-color: #e0e0e0;
-  padding: 5px; }
+body
+{
+    color: #444;
+    font-family: 'PT Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    counter-reset: td;
+}
+table
+{
+    border-spacing: 0px;
+    font-size: 13px;
+    line-height: 1.25;
+    width: 100%;
+}
+td
+{
+    vertical-align: top;
+}
+thead
+{
+    background-color: #e0e0e0;
+}
+tbody tr
+{
+    border-bottom: 1px solid #dedede;
+    padding: 5px 0;
+}
+td.position:before
+{
+    content: counter(td);
+    counter-increment: td;
+}
+tr:nth-child(even)
+{
+    background-color: #f7f7f7;
+}
+a
+{
+    border-radius: 3px;
+    display: inline-block;
+    padding: 4px;
+    text-decoration: none;
+}
+a:hover
+{
+    text-decoration: none;
+}
 
-table tr td {
-  border-bottom: 1px solid #dedede;
-  padding: 10px;
-  font-size: 13px;
-  line-height: 16px;
-  vertical-align: top; }
+/* ids */
 
-tr:nth-child(even) {
-  background-color: #f7f7f7; }
-
-a {
-  display: block;
-  padding: 5px;
-  text-decoration: none !important;
-  color: white;
-  border-radius: 2px; }
-  a:hover {
-    text-decoration: none !important;
-    color: white; }
-
-#contenedor {
-  width: 98%;
-  min-width: 1024px; }
-
-#campo-filtros {
-  margin: 0 0 20px 0; }
-  #campo-filtros legend {
+#contenedor
+{
+    width: 98%;
+    min-width: 1024px;
+}
+#campo-filtros
+{
+    margin: 10px 0 20px 0;
+}
+#campo-filtros legend
+{
     border: none;
     color: #444;
     font-size: 18px;
     font-weight: 700;
-    margin: 0 0 10px 0; }
-
-#contenedor {
-  min-width: 1024px; }
-  #contenedor #contenido #campo-busqueda #buscar-boton {
+    margin: 0 0 10px 0;
+}
+#contenedor
+{
+    min-width: 1024px;
+}
+#contenedor #contenido #campo-busqueda #buscar-boton
+{
     background: #ec9f48;
     color: white;
-    font-size: 18px; }
-
-#header {
-  background-color: #00b4e1;
-  margin: 0 0 30px 0; }
-  #header h1 {
+    font-size: 18px;
+}
+#header
+{
+    background-color: #00b4e1;
+    margin: 0 0 30px 0;
+}
+#header h1
+{
     font-weight: 700;
     margin: 0;
-    padding: 1vh 0; }
-  #header p {
-    font-size: 18px; }
-  #header .navbar {
-    margin: 0; }
-  #header .navbar-default {
+    padding: 1vh 0;
+}
+#header p
+{
+    font-size: 18px;
+    padding: 0;
+}
+#header .navbar
+{
+    margin: 0;
+}
+#header .navbar-default
+{
     background-color: transparent;
     border-color: transparent;
-    color: white; }
-
-.num {
-  width: 2%; }
-
-.codigo {
-  width: 6%; }
-
-.numero_ley {
-  width: 4%; }
-
-.exportar {
-  padding: 5px !important; }
-  .exportar a:hover {
     color: white;
-    opacity: 0.5;
-    text-decoration: none; }
-
-.titulo {
-  width: 20%; }
-
-.titulo .el_titulo {
-  font-weight: bold; }
-
-.titulo .fragmento {
-  color: #333333; }
-
-.busqueda-fragmento {
-  background-color: #f8ebcb; }
-
-.fecha {
-  width: 8%; }
-
-.organismos {
-  line-height: 100%;
-  margin-bottom: 0.6em;
-  width: 20%; }
-
-.montos {
-  width: 15%;
-  line-height: 100%;
-  margin-bottom: 0.6em; }
-
-#overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.84); }
-  #overlay #preloader {
+}
+#busqueda-fragmento
+{
+    background-color: #f8ebcb;
+}
+#overlay
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.84);
+}
+#overlay #preloader
+{
     font-size: 24px;
     border-radius: 5px;
     margin: 7vh auto;
     width: 13%;
     padding: 10px 17px;
-    font-weight: bold; }
+    font-weight: bold;
+}
 
-.organismo, .monto {
-  margin-bottom: 0.6em; }
+/* clases */
 
-.referencias {
-  width: 15%;
-  border-radius: 2px;
-  color: #444444;
-  cursor: pointer;
-  padding: 5px 0; }
-
-.referencias div a {
-  margin-top: 4px;
-  color: #444444;
-  text-decoration: none;
-  background-color: rgba(0, 180, 255, 0.2);
-  -webkit-transition: 0.3s ease-in-out;
-  -moz-transition: 0.3s ease-in-out;
-  -o-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-  margin-right: 5px; }
-  .referencias div a:hover {
-    background-color: #00b4ff;
+.brand-blue
+{
+    background-color: rgba(0,180,255,0.2);
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+}
+.brand-blue:hover
+{
+    background-color: rgba(0,180,255,1);
     color: white !important;
-    text-decoration: none; }
+}
+.brand-green
+{
+    background-color: rgba(149,194,64,0.2);
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+}
+.brand-green:hover
+{
+    background-color: rgba(149,194,64,1);
+    color: white !important;
+}
+.brand-orange
+{
+    background-color: rgba(236,159,72,0.2);
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+}
+.brand-orange:hover
+{
+    background-color: rgba(236,159,72,1);
+    color: white !important;
+}
+.codigo
+{
+    width: 2%;
+}
+.exportar
+{
+    width: 8%;
+}
+.exportar div
+{
+    display: inline-block;   
+}
+.exportar div a
+{
+    color: white;
+    margin: 0 4px 4px 0;
+}
+.exportar div a:hover 
+{
+    color: white;
+    opacity: 0.75;
+}
+.exportar_html a
+{
+    background-color: #00b4e1;
+}
+.exportar_pdf a
+{
+    background-color: #dc5f50
+}
+.exportar_xml a
+{
+    background-color:#EC9F48
+}
+.fecha
+{
+    width: 8%;
+}
+.filter
+{
+    color: #444;
+}
+.filter:hover
+{
+    color: #444;
+    text-decoration: underline;
+}
+.montos
+{
+    width: 10%;
+}
+.nota
+{
+    line-height: 1;
+    margin-bottom: 4px;
+}
+.nota a
+{
+    color: #444;
+    cursor: pointer;
+    display: inline-block;
+}
+.numero_ley
+{
+    width: 2%;
+}
+.organismos
+{
+    width: 10%;
+}
+.position
+{
+    font-weight: 700;
+    width: 1%;
+}
+.promulgacion
+{
+    width: 8%;
+}
+.publicacion
+{
+    width: 8%;
+}
+.referencias
+{
+    width: 10%;
+}
+.table-cell
+{
+    padding: 1% 0.5%;
+}
+.titulo
+{
+    width: 22%;
+}
+.titulo h3
+{
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0;
+}
+.titulo h3 a
+{
+    color: #444;
+}
+.titulo h3 a:hover
+{
+    text-decoration: underline;
+}
+.titulo .fragmento
+{
+    color: #333333;
+}
+.triangle-down
+{
+    width: 0;
+    height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 4px solid #444;
+    position: relative;
+    top: 12px;
+    left: 4px;
+    
+}
 
 /*# sourceMappingURL=styles.css.map */
