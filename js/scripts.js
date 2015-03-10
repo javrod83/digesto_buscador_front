@@ -1,7 +1,8 @@
 //CONFIGURACION DE LOS CALENDARIOS 
 var calendar_conf = {
-	monthNames  : [ "Enero", "Febrero", "Martes", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ],
-	dateFormat  : "yy-mm-dd",
+    monthNames  : [ "Enero", "Febrero", "Martes", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ],
+    monthNamesShort: [ "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic" ],
+    dateFormat  : "yy-mm-dd",
 	dayNamesMin : [ "Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab" ],
 	changeYear  : true,
 	yearRange   : "1900:"+(new Date().getFullYear()),
@@ -9,7 +10,8 @@ var calendar_conf = {
 }; 
 
 var busqueda = {
-	base_url : "http://sparl-desa.hcdn.gob.ar:8080/exist/rest/db/digesto/xql/search-index.xql?",
+	//base_url : "http://sparl-desa.hcdn.gob.ar:8080/exist/rest/db/digesto/xql/search-index.xql?",
+	base_url : exist_proxy + "xql/search-index.xql?",
 	bind     : function()
 		{
 
@@ -70,17 +72,17 @@ var filtros = {
 
 			//ley,query, rama, fechaDesde, fechaHasta
 			var le_query ="" ; 
-			 if( $('#numero-check').is(":checked")) //si el check de numero de ley esta pinchado
+			 if( $('#numero-value').val () !== '') 
 			 	le_query += "ley=" + $('#numero-value').val() ;  
 			 else
 			 	{
 			 		if ($('#buscar-value').val () !== '')
 			 			{le_query += "query=" + $('#buscar-value').val();}
-			 		if ($('#ramas-check').is(":checked") )	
+			 		if ($('#ramas-select').val() !== 'Seleccione' )	
 			 			{le_query += ((le_query.length  === busqueda.base_url.length)?"":"&") + "rama=" + $("#ramas-select").val();}
-			 		if ($('#fecha-desde-check').is(":checked") )
+			 		if ($("#fecha-desde-value").val() !== "" )
 			 			{le_query += ((le_query.length  === busqueda.base_url.length)?"":"&") +"fechaDesde=" + $('#fecha-desde-value').val();}
-			 		if ($('#fecha-hasta-check').is(":checked") )
+			 		if ($('#fecha-hasta-value').val() !== "" )
 			 			{le_query += ((le_query.length  === busqueda.base_url.length)?"":"&") +"fechaHasta=" + $('#fecha-hasta-value').val();}
 			 	}
 			 return le_query; 
@@ -91,8 +93,10 @@ var filtros = {
 	
 
 var resultados = {
+    last           : {} , 
 	proccess 	   : function(payload)
 		{
+		    resultados.last= payload ; 
 			resultados.hide_loader();
 			if (payload.normas === null)
 				{	resultados.show_no_result();	}
@@ -113,35 +117,41 @@ var resultados = {
                     '<td class="codigo table-cell">'+val.docNumber[0]['$']+'</td>'+
                		'<td class="numero_ley table-cell">'+val.docNumber[1]['$']+'</td>'+
 	                '<td class="exportar table-cell">'+
-	                	'<div class="exportar_html">'+
-                            '<a href="http://sparl-desa.hcdn.gob.ar:8080/exist/rest/digesto/transform/transform_01.xql?as=html&amp;docNumber='+val.docNumber[1]['$']+'">html</a>'+
-                        '</div>'+
-                        '<div class="exportar_pdf">'+
-                            '<a href="http://sparl-desa.hcdn.gob.ar:8080/exist/rest/digesto/transform/transform_01.xql?as=pdf&amp;docNumber='+val.docNumber[1]['$']+'">pdf</a>'+
-                        '</div>'+
-                        '<div class="exportar_xml">'+
-                            '<a href="http://sparl-desa.hcdn.gob.ar:8080/exist/rest/digesto/transform/transform_01.xql?as=xml&amp;docNumber='+val.docNumber[1]['$']+'">xml</a>'+
+	                    '<div>'+
+	                        '<div class="input-group">'+
+	                            '<input type="checkbox" id="renumeracion"/><label for="renumeracion">Renumerada</label>'+
+	                        '</div>'+
+    	                	'<div class="exportar_html">'+
+                                '<a href="'+exist_proxy+'transform/transform_01.xql?as=html&amp;docNumber='+val.docNumber[1]['$']+'">html</a>'+
+                            '</div>'+
+                            '<div class="exportar_pdf">'+
+                                '<a href="'+exist_proxy+'transform/transform_01.xql?as=pdf&amp;docNumber='+val.docNumber[1]['$']+'">pdf</a>'+
+                            '</div>'+
+                            '<div class="exportar_xml">'+
+                                '<a href="'+exist_proxy+'transform/transform_01.xql?as=xml&amp;docNumber='+val.docNumber[1]['$']+'">xml</a>'+
+                            '</div>'+
                         '</div>'+
 	                '</td>'+
                     '<td class="titulo table-cell">'+
                     	'<h3>'+
-                            '<a href="http://sparl-desa.hcdn.gob.ar:8080/exist/rest/digesto/transform/transform_01.xql?as=html&amp;docNumber='+val.docNumber[1]['$']+'">'+val.docTitle['$']+'</a>'+
+                            '<a href="'+exist_proxy+'transform/transform_01.xql?as=html&amp;docNumber='+val.docNumber[1]['$']+'">'+val.docTitle['$']+'</a>'+
                         '</h3>'+
     			 	    '<div class="fragmento">'+presentar_fragmento(val)+'</div>'+
                     '</td>'+
-                    '<td class="fecha table-cell">'+val.docDate['$']+'</td>'+
+                    '<td class="fecha table-cell">'+formatea_fecha(val.docDate['date'])+'</td>'+
                     '<td class="promulgacion table-cell">'+ presentar_promulgacion(val.step)+'</td>'+
                     '<td class="publicacion table-cell">'+presentar_publicacion(val.publication)+'</td>'+
                     '<td class="organismos table-cell">'+presentar_organizaciones(val)+ '</td>'+
                     '<td class="montos table-cell">'+presentar_montos(val)+'</td>'+
                     '<td class="referencias table-cell">'+presentar_referencias(val)+'</td>'+
-                    '<td class="modificado table-cell">'+val.ult+'</td>'+
+                    '<td class="modificado table-cell">'+formatea_fecha(val.ult)+'</td>'+
+                    '<td class="size table-cell">'+val.siz+' bytes</td>'+
                 '</tr>'
             );
 			
             function presentar_promulgacion(promulgacion)
                 {
-                    console.log(promulgacion);
+                 //   console.log(promulgacion);
                     if (promulgacion === undefined )
                         return("");
                     else
@@ -194,12 +204,19 @@ var resultados = {
 						return out;
 					//console.log(val.references);
 					$.each(val.references,function(i,v){
-						if (v !== null)
+						
+						if (v.reference !== undefined)
 							{
 								out +='<div class="nota">'+
                     				'<a href="'+v.reference.link+'" class="brand-blue">'+v.reference.name+'</a>'+
                     			'</div>'; 
 							}
+						else
+						    {
+						        out +='<div class="nota">'+
+                    				'<a  class="brand-blue">'+v.textRef+'</a>'+
+                    			'</div>';
+						    }
 					});
 
 					return out ;

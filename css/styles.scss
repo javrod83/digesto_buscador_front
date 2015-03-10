@@ -192,7 +192,7 @@ a
 }
 .exportar
 {
-    width: 8%;
+    width: 9%;
 
     div
     {
@@ -231,10 +231,18 @@ a
             background-color:#EC9F48
         }
     }
+    .input-group
+    {
+        label
+        {
+            font-weight: 400;
+            padding-left: 5px;
+        }
+    }
 }
 .fecha
 {
-    width: 7%;
+    width: 6.5%;
 }
 .filter
 {
@@ -248,7 +256,7 @@ a
 }
 .modificado
 {
-    width: 7%;
+    width: 6.5%;
 }
 .montos
 {
