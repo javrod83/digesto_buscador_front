@@ -190,6 +190,11 @@ a
 {
     width: 2%;
 }
+.ellipsis
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .exportar
 {
     width: 9%;

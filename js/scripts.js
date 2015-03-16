@@ -118,11 +118,11 @@ var resultados = {
                		'<td class="numero_ley table-cell">'+val.docNumber[1]['$']+'</td>'+
 	                '<td class="exportar table-cell">'+
 	                    '<div>'+
-	                        '<div class="input-group">'+
-	                            '<input type="checkbox" id="renumeracion"/><label for="renumeracion">Renumerada</label>'+
+	                        '<div class="input-group ellipsis">'+
+	                            '<input type="checkbox" name="renumeracion" value="Renumerada" checked="checked" id="check_'+val.docNumber[1]['$']+'" onClick="modificarHref('+"'"+'#html_'+val.docNumber[1]['$']+"','"+val.docNumber[1]['$']+"','"+'#check_'+val.docNumber[1]['$']+"'"+');"/><label for="check_">Renumerada</label>'+
 	                        '</div>'+
     	                	'<div class="exportar_html">'+
-                                '<a href="'+exist_proxy+'transform/transform_01.xql?as=html&amp;docNumber='+val.docNumber[1]['$']+'">html</a>'+
+                                '<a id="html_'+val.docNumber[1]['$']+'"  href="'+exist_proxy+'transform/transform_01.xql?as=html&amp;docNumber='+val.docNumber[1]['$']+'&renum=false" >html</a>'+
                             '</div>'+
                             '<div class="exportar_pdf">'+
                                 '<a href="'+exist_proxy+'transform/transform_01.xql?as=pdf&amp;docNumber='+val.docNumber[1]['$']+'">pdf</a>'+
@@ -149,6 +149,7 @@ var resultados = {
                 '</tr>'
             );
 			
+		       	
             function presentar_promulgacion(promulgacion)
                 {
                  //   console.log(promulgacion);
@@ -271,7 +272,10 @@ var resultados = {
 		}
 } ; 
 
-
+function modificarHref(anchorID,docNumber,checkID)
+			    {
+			        $(anchorID).attr('href',exist_proxy+"transform/transform_01.xql?as=html&docNumber="+docNumber+"&renum="+$(checkID).is(':checked'));
+		       	};
 
 // cuando todos los elementos de la pagina esten cargados buscar los registros del indice
 $( document ).ready(function(){
